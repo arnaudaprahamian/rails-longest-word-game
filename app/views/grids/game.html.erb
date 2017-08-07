@@ -1,0 +1,23 @@
+<h1>La Grille</h1>
+
+<div class="container text-center">
+  <h1>********* Welcome to the longest word-game! *********<h1>
+  <p>Here is your grid:</p>
+  <ul class="list-inline">
+    <% @grid.each do |letter| %>
+    <li class="list-inline-item"><%= letter %></li>
+    <%end%>
+  </ul>
+  <h1>*****************************************************<h1>
+  <h2>What is your longest word?</h2>
+  <form class="form-group" action="/score" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="form-group">
+      <label for="longestword">Your word:</label>
+      <input type="text" class="form-control" name="longword" placeholder="Write it here!">
+      <input type="hidden" class="form-control" name="grid" value="<%=@grid%>">
+      <input type="hidden" class="form-control" name="time" value="<%= @time %>">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
